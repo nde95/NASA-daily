@@ -61,7 +61,7 @@ const updateDOM = () => {
 
 const getNasaPictures = async () => {
     try {
-        const response = await fetch(apiKey);
+        const response = await fetch(apiUrl);
         resultsArray = await response.json();
         console.log(resultsArray);
         updateDOM();
