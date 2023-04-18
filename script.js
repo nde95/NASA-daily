@@ -10,7 +10,6 @@ const apiKey = 'DEMO_KEY';
 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=${count}`;
 
 let resultsArray = []; 
-
 const updateDOM = () => {
     resultsArray.forEach((result) => {
         // card container 
@@ -29,7 +28,7 @@ const updateDOM = () => {
         image.classList.add('card-img-top');
         // body of card 
         const cardBody = document.createElement('div');
-        cardBody.classList.add('card=body');
+        cardBody.classList.add('card-body');
         // card titles 
         const cardTitle = document.createElement('h5');
         cardTitle.classList.add('card-title');
@@ -49,13 +48,14 @@ const updateDOM = () => {
         date.textContent = result.date;
         // copyright 
         const copyright = document.createElement('span');
-        copyright.textContent = `${result.copyright}`;
+        copyright.textContent = result.copyright ? result.copyright : '';
         // appending 
         footer.append(date, copyright);
-        cardBody.append(cardTitle, cardText, saveText, footer);
+        cardBody.append(cardTitle, saveText, cardText, footer);
         link.appendChild(image); 
         card.append(link, cardBody);
         console.log(card);
+        imagesContainer.appendChild(card);
     });
 }
 
